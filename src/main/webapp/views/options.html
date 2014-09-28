@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="info-text">Second step! Now it's time for you to build your poll, list below the possible options
+            for the poll
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 15px;">
+        <div class="form-group col-md-5 col-md-offset-3">
+            <label>Select type of your options</label>
+            <ul class="nav nav-pills">
+                <li><a data-toggle="pill" href="" ng-click="inputType = 'text'">Text</a></li>
+                <li><a data-toggle="pill" href="" ng-click="inputType = 'date'">Date</a></li>
+                <li><a data-toggle="pill" href="" ng-click="inputType = 'datetime-local'">Datetime</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr/>
+
+    <form ng-if="inputType" name="optionsForm" class="form-horizontal" novalidate>
+
+        <div class="row" style="margin-bottom: 40px;">
+            <div class="col-md-9">
+                <button type="button" class="btn btn-default btn-md btn-right" ng-click="addOption()">
+                    <span class="glyphicon glyphicon-plus"></span> Add option
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group" ng-repeat="option in poll.options track by $index">
+            <label class="col-md-2 control-label" for="option_{{$index}}">{{'Option ' + ($index + 1)}}</label>
+
+            <div class="col-md-6">
+                <input type="{{inputType}}" name="option" id="option_{{$index}}" class="form-control"
+                       ng-model="poll.options[$index]"/>
+            </div>
+            <div class="col-md-1 hand">
+                <div class="glyphicon glyphicon-remove" ng-click="removeOption($index)"></div>
+            </div>
+        </div>
+
+        <button type="button" class="btn poll-btn btn-md btn-right" ng-click="saveOptions()">Continue...</button>
+    </form>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="info-text">Time to share! You have built your custom poll so now it's time to share it with your friends!</div>
+    </div>
+    <div class="row">
+        Here is the link to share the poll with all your friends:
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2">xx
+            <input type="text" readonly class="form-control" ng-model="pollUrl"/>
+        </div>
+    </div>
+
+    Go to your poll: <a ng-href="pollUrl">Poll</a>
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-6 col-md-offset-2">
+            <button type="button" class="btn poll-btn btn-right" ng-click="finishPoll()">Finish!</button>
+        </div>
+    </div>
+
+</div>

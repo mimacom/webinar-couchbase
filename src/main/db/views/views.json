@@ -1,0 +1,9 @@
+{ "_id": "_design/poll", "language": "javascript", "views": {
+    "sequence-id": {
+        "map" : "function (doc, meta) { emit(meta.id, null); } ",
+        "reduce": "function (key, values, rereduce) {\n var max = -Infinity\n for(var i = 0; i < key.length; i++)\n max = Math.max(key[i], max)\n return max\n }"
+    },
+    "findByUserName": {
+        "map": "function (doc, meta) { if (doc._class == 'com.mimacom.polls.domain.Poll') { emit(doc.userName, null); }}"
+    }
+} }
