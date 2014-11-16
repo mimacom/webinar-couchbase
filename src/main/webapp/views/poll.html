@@ -1,24 +1,30 @@
 <div class="container-fluid">
-    <div class="row-fluid">
-        <div class="info-text">First step! Provide your name and your e-mail address so you can start building your poll:)</div>
+    <div class="row">
+        <div class="info-text">First step! Provide your name and your e-mail address so you can start building your poll :) You can also provide a title to identify your poll</div>
     </div>
 
-    <form name="userDataForm" novalidate class="form-horizontal">
+    <form name="pollForm" novalidate class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">Title:<sup class="mandatory">*</sup></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="title" name="title" ng-model="poll.title" required/>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Name:<sup class="mandatory">*</sup></label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="name" name="name" ng-model="userData.userName" required/>
+                <input type="text" class="form-control" id="name" name="name" ng-model="poll.userName" required/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="email">Email:<sup class="mandatory  ">*</sup></label>
             <div class="col-sm-5">
-                <input type="email" class="form-control" id="email" name="email" ng-model="userData.emailAddress" required ng-pattern=""/>
+                <input type="email" class="form-control" id="email" name="email" ng-model="poll.emailAddress" required ng-pattern=""/>
             </div>
-            <div ng-if="userDataForm.email.$error.email">Email address is not valid!</div>
+            <div ng-if="pollForm.email.$error.email">Email address is not valid!</div>
         </div>
         <div class="col-sm-7">
-            <button type="button" class="btn poll-btn btn-right" ng-click="createPoll()" ng-disabled="userDataForm.$invalid">Start your poll</button>
+            <button type="button" class="btn poll-btn btn-right" ng-click="createPoll()" ng-disabled="pollForm.$invalid">Start your poll</button>
         </div>
     </form>
 

@@ -5,5 +5,8 @@
     },
     "findByUserName": {
         "map": "function (doc, meta) { if (doc._class == 'com.mimacom.polls.domain.Poll') { emit(doc.userName, null); }}"
+    },
+    "byId": {
+        "map": "function (doc, meta) {\n  if (doc._class == 'com.mimacom.polls.domain.Poll'){\n    emit(meta.id, null);\n  }\n  \n}"
     }
 } }

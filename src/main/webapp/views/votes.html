@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <form name="votesForm">
+        <div class="row">
+            <div class="info-text">Fill the poll providing your name and the options you are available for.</div>
+        </div>
+        <div class="row">
+            <h4 class="bold dark"> {{poll.title}}</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="dark">Poll created by: </span><span>{{ poll.userName }}</span>
+            </div>
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-time"></span> <span>{{poll.createdOn | date:'dd-MM-yyyy HH:mm'}} h</span>
+            </div>
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-user"></span> {{ participants.length }}
+            </div>
+        </div>
+        <div ng-if="!isReadonly && popular.options" style="margin-top: 20px;" class="dark" ><span class="bold" ng-repeat="option in popular.options track by $index">{{$last && option || option + ', ' }}</span> is the most voted option at the current time.</div>
+        <div ng-if="isReadonly && popular.options" style="margin-top: 20px;" class="dark" >This poll has been closed and the selected option has been {{ selectedOption }}.</div>
+        <hr/>
+        <table class="bordertable">
+            <thead>
+            <th style="text-align: left;" width="30%">Name</th>
+            <th ng-repeat="option in poll.options">{{option}}</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="participant in participants track by $index" ng-class-even="'row-even'" ng-class-odd="'row-odd'">
+                <td style="text-align: left;" >{{participant.name}}</td>
+                <td ng-repeat="vote in participant.votes" class="result" ng-switch="vote.selected" ng-class="{selected: vote.selected, 'no-selected': !vote.selected}">
+                    <span ng-switch-when="true" class="glyphicon glyphicon-thumbs-up"></span>
+                    <span ng-switch-default class="glyphicon glyphicon-thumbs-down"></span>
+                </td>
+            </tr>
+            <tr ng-if="!isAdmin && !isReadonly">
+                <td><input type="text" required class="form-control" ng-model="participant.name"/></td>
+                <td ng-repeat="vote in participant.votes"><input type="checkbox" ng-model="vote.selected"  name="vote"/></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Most voted</td>
+                <td ng-repeat="vote in votes" ng-class="{bold: isMax(vote)}">{{vote.total}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+        <div ng-if="showSelect">
+            <ul class="nav nav-pills">
+                <li ng-repeat="option in popular.options track by $index"><a href="" ng-click="setOption(option)">{{option}}</a></li>
+            </ul>
+        </div>
+        <div class="row" ng-if="isAdmin || isReadonly">
+            <button type="button" class="btn poll-btn" ng-click="closePoll()" ng-disabled="!selectedOption && showSelect">Close poll</button>
+        </div>
+
+
+        <button style="margin-top: 30px;" type="button" ng-if="!isReadonly && !isAdmin" ng-click="save()" ng-disabled="votesForm.$invalid" class="btn poll-btn btn-right">Save</button>
+
+    </form>
+
+</div>

@@ -1,5 +1,5 @@
 body {
-    background: #fafafa;
+    background: #F8FCFB;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -12,9 +12,7 @@ body {
     left: 0;
     border: 0;
     z-index: 1000;
-    background-image: url("../images/development_ribbon.png");
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: url("../images/development_ribbon.png") no-repeat center center;
 }
 
 .hero-unit {
@@ -108,15 +106,18 @@ body {
 }
 
 .navbar-default {
-    background-color: #7C7878;
+    background-color: #18866B;
+}
+.jumbotron {
+    background-color: transparent;
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #fdd911;
+    color: #ffffff;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: #F3F3F0;
+    color: ghostwhite;
     background-color: transparent;
     text-decoration: none;
 }
@@ -125,9 +126,22 @@ body {
     width: 800px;
     margin-left: 300px;
 }
+
 .poll-btn {
-    background-color: #fdd911;
-    border-color: #fdd911;
+    background-color: #18866B;
+    border-color: #188A6E;
+    color: rgb(250, 250, 248);
+}
+
+.poll-btn:hover {
+    background-color: #1ABB93;
+    border-color: #22C29B;
+    color: white;
+}
+
+.poll-btn[disabled] {
+    background-color: #D1DFDB;
+    border-color: #A8A8A8;
     color: rgb(105, 95, 63);
 }
 
@@ -165,16 +179,88 @@ div.info-text {
     margin-bottom: 50px;
     color: #5C5A26;
 }
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-    color: #8B7704;
-    background-color: #fdd911;
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus{
+    color: #1D2B1A;
+    background-color: #0FB88F;
 }
-.nav-pills>li>a {
-    color: #8B7704;
+.nav-pills>li>a{
+    color: #16ECB8;
+}
 
+a:hover,
+a:focus{
+    color: #34B394;
+    text-decoration: none;
+    cursor: pointer;
+}
+a{
+    color: #18866B;
 }
 
 label {
     color: #5C5A26;
 
+}
+
+table.bordertable {
+    width: 100%;
+    color: #7C7878;
+}
+
+table.bordertable thead th,
+table.bordertable tbody td,
+table.bordertable tbody tr {
+    border: 1px solid #ddd;
+}
+
+table.bordertable tbody td,
+table.bordertable thead th{
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.bordertable tbody tr.row-even {
+    background-color: #F3F3F3;
+}
+
+table.bordertable tbody tr.row-even:hover,
+table.bordertable tbody tr.row-odd:hover{
+    background-color: #F3F3F3;
+}
+
+.bold {
+    font-weight: bold;
+}
+.yellow {
+    color: #0FB88F;
+
+}
+
+.dark {
+    color: #7C7878;
+}
+
+.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+.no-selected {
+    background-color: #f2dede;
+    color: #a94442;
+
+}
+
+.result {
+    font-weight: bold;
+    font-size: 130%;
+}
+p.subtitle {
+    font-size: 90%;
+    font-weight: bold;
+    color: rgb(122, 113, 113);
+    margin-top: 5px;
+    margin-left: 20px;
 }

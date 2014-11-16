@@ -16,7 +16,7 @@
 
     <context:annotation-config/>
     <context:component-scan
-            base-package="com.mimacom.polls.web.controller, com.mimacom.polls.service.impl, com.mimacom.polls.config"/>
+            base-package="com.mimacom.polls.web.controller, com.mimacom.polls.service.impl, com.mimacom.polls.repository.impl, com.mimacom.polls.config, com.mimacom.polls.util"/>
 
     <!-- Avoids caching that causes problems in IE8 -->
     <!--<mvc:interceptors>

@@ -111,12 +111,12 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-couchbase</artifactId>
-            <version>1.2.0.RELEASE</version>
+            <version>1.2.1.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.couchbase.client</groupId>
             <artifactId>java-client</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
         </dependency>
         <!-- Test dependencies -->
         <dependency>
@@ -192,7 +192,7 @@
                                 <argument>Administrator</argument>
                                 <argument>s3cr3t0</argument>
                                 <argument>localhost:8091</argument>
-                                <argument>spc</argument>
+                                <argument>polls</argument>
                             </arguments>
                         </configuration>
                     </plugin>

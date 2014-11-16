@@ -1,12 +1,31 @@
 <div class="jumbotron">
     <h1>Welcome to Polls!</h1>
     <br/>
+
     <p>
         With <b>Polls</b> you will finally solve all your organization problems with your friends. Is it impossible
         to plan a trip with your friends because you are unable to find the unique weekend all of you are free? Find
         out how to solve this problem, in 3 clicks!
     </p>
+
     <p>
-        <button type="button" class="btn poll-btn   " ng-click="start()">Start now</button>
+        <button type="button" class="btn poll-btn" ng-click="start()">Start now</button>
+    </p>
+    <p>
+        Do you want to manage your polls? <a data-toggle="collapse" data-target="#namePanel">Click here</a>
+
+    <div id="namePanel" class="collapse">
+        <form name="nameForm" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="name">Name:<sup class="mandatory">*</sup></label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="name" name="name" ng-model="userName" required/>
+                </div>
+            </div>
+
+            <button type="button" class="btn poll-btn" ng-click="viewPolls()">View polls</button>
+        </form>
+
+    </div>
     </p>
 </div>

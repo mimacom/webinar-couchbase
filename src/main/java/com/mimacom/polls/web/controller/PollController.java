@@ -3,11 +3,15 @@ package com.mimacom.polls.web.controller;
 import com.mimacom.polls.domain.Poll;
 import com.mimacom.polls.service.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author sago, mimacom
@@ -30,9 +34,22 @@ public class PollController {
         this.pollService.save(poll);
     }
 
-    @RequestMapping(value = "/poll/{userName}", method = RequestMethod.GET)
-    public Poll getPollByUserName(@PathVariable String userName) {
-        return this.pollService.getPollByUser(userName);
+    @RequestMapping(value = "/poll/username/{userName}", method = RequestMethod.GET)
+    public List<Poll> getPollsByUserName(@PathVariable String userName) {
+        return this.pollService.getPollsByUser(userName);
     }
+
+    @RequestMapping(value = "/poll/{pollId}", method = RequestMethod.GET)
+    public Poll getPollById(@PathVariable String pollId) {
+        return this.pollService.getById(pollId);
+    }
+
+    @RequestMapping(value = "/poll/{pollId}/close", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void closePoll(@PathVariable String pollId, @RequestBody final String selectedOption) {
+        this.pollService.closePoll(pollId, selectedOption);
+    }
+
+
 }
 

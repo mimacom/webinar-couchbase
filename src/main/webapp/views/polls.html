@@ -1,0 +1,16 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="text-info">
+            Hello, {{userName}}, below you can find all the polls you have created along time. Click on the title to see the detail.
+        </div>
+    </div>
+
+    <hr/>
+
+    <ul>
+        <li ng-repeat="poll in polls"><a ng-href="#/poll/{{poll.id}}?isAdmin=true">{{poll.title}}</a>
+            <p class="subtitle">{{poll.createdOn | date:'dd-MM-yyyy HH:mm' }} h</p>
+        </li>
+    </ul>
+</div>

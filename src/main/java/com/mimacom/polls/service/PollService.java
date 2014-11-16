@@ -10,5 +10,9 @@ public interface PollService {
 
     String save(Poll poll);
 
-    Poll getPollByUser(String userName);
+    java.util.List<Poll> getPollsByUser(String userName);
+
+    Poll getById(String pollId);
+
+    void closePoll(String pollId, String selectedOption);
 }
