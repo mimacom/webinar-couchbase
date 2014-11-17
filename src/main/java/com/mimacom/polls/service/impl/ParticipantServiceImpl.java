@@ -4,10 +4,10 @@ import com.couchbase.client.protocol.views.ComplexKey;
 import com.couchbase.client.protocol.views.Query;
 import com.couchbase.client.protocol.views.Stale;
 import com.mimacom.polls.domain.Participant;
+import com.mimacom.polls.repository.CommonRepository;
 import com.mimacom.polls.repository.ParticipantRepository;
+import com.mimacom.polls.repository.PollRepository;
 import com.mimacom.polls.service.ParticipantService;
-import com.mimacom.polls.util.N1Q3LIdGenerator;
-import com.mimacom.polls.util.ViewIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,20 +19,22 @@ import java.util.List;
  */
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Service
-public class ParticipantServiceImpl extends ViewIdGenerator implements ParticipantService {
+public class ParticipantServiceImpl implements ParticipantService {
 
     private final ParticipantRepository participantRepository;
+    private final CommonRepository commonRepository;
 
     @Autowired
-    public ParticipantServiceImpl(ParticipantRepository participantRepository) {
+    public ParticipantServiceImpl(ParticipantRepository participantRepository, CommonRepository commonRepository) {
         this.participantRepository = participantRepository;
+        this.commonRepository = commonRepository;
     }
 
     @Override
     public void saveParticipant(String pollId, Participant participant) {
 
         if (participant.getId() == null){
-            participant.setId(this.getNextId());
+            participant.setId(this.commonRepository.getNextId());
         }
         participant.setPollFk(pollId);
         this.participantRepository.save(participant);

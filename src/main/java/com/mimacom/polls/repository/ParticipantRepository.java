@@ -2,7 +2,6 @@ package com.mimacom.polls.repository;
 
 import com.couchbase.client.protocol.views.Query;
 import com.mimacom.polls.domain.Participant;
-import org.springframework.data.couchbase.core.view.View;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * @since 0.1
  */
 @Repository
-public interface ParticipantRepository extends CrudRepository<Participant, String>, ParticipantCustomRepository{
+public interface ParticipantRepository extends CrudRepository<Participant, String>, ParticipantCustomRepository {
 
     List<Participant> findByPollFk(Query query);
 
