@@ -122,11 +122,6 @@ body {
     text-decoration: none;
 }
 
-#page-content {
-    width: 800px;
-    margin-left: 300px;
-}
-
 .poll-btn {
     background-color: #18866B;
     border-color: #188A6E;
@@ -182,11 +177,11 @@ div.info-text {
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus{
-    color: #1D2B1A;
+    color: white;
     background-color: #0FB88F;
 }
 .nav-pills>li>a{
-    color: #16ECB8;
+    color: #109172;
 }
 
 a:hover,

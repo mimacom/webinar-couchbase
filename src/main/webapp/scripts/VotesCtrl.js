@@ -1,58 +1,9 @@
 'use strict';
 
-/* Controllers */
-
 var isDefined = angular.isDefined;
 
-pollsApp.controller('WelcomeCtrl', function ($scope, $location) {
-
-    $scope.start = function () {
-        $location.path('poll');
-    };
-
-    $scope.viewPolls = function () {
-        $location.path('polls/' + $scope.userName);
-    };
-})
-    .controller('PollCtrl', function ($scope, pollService, $location, $routeParams) {
-
-        var pollId = $routeParams.pollId;
-
-        $scope.createPoll = function () {
-            pollService.createPoll($scope.poll).then(function (id) {
-                $location.path('poll/' + id + '/options');
-            });
-        };
-
-        if (isDefined(pollId)) {
-            pollService.getPollById(pollId).then(function (data) {
-                $scope.poll = data;
-                $scope.poll.options = ["", "", "", "", ""];
-            });
-        }
-
-        $scope.addOption = function () {
-            $scope.poll.options.push("");
-        };
-
-        $scope.removeOption = function (index) {
-            $scope.poll.options.splice(index, 1);
-        };
-
-        $scope.saveOptions = function () {
-
-            pollService.savePoll($scope.poll).then(function () {
-                $location.path('/poll/' + pollId + '/share');
-            });
-        };
-
-        $scope.pollUrl = 'http://localhost:8080/polls/#/poll/' + pollId + '/fill';
-
-        $scope.finishPoll = function () {
-            $location.path('/');
-        };
-    })
-    .controller('VotesCtrl', function ($scope, $routeParams, pollService, participantService, $location, notify) {
+pollsApp
+    .controller('votesCtrl', function ($scope, $routeParams, pollService, participantService, $location, notify) {
 
         //noinspection JSUnresolvedVariable
         var pollId = $routeParams.pollId;
@@ -136,26 +87,4 @@ pollsApp.controller('WelcomeCtrl', function ($scope, $location) {
                 });
             });
         }
-    })
-    .controller('ThanksCtrl', function ($scope, $routeParams, $location, participantService, notify) {
-
-        var pollId = $routeParams.pollId;
-        participantService.getById(pollId, $routeParams.participantId).then(function (data) {
-            $scope.participant = data;
-        }, function (data) {
-            console.log('Exception', data);
-            notify({message: 'An unexpected error has occurred.', classes: 'alert-danger'});
-        });
-
-        $scope.back = function () {
-            $location.path('/poll/' + pollId + '/fill/');
-        };
-    })
-    .controller('PollsCtrl', function ($scope, $routeParams, $location, notify, pollService) {
-        $scope.userName = $routeParams.username;
-
-        pollService.getPolls($scope.userName).then(function (data) {
-            $scope.polls = data;
-        });
     });
-

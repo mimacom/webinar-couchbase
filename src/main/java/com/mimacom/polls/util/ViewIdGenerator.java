@@ -21,7 +21,7 @@ public class ViewIdGenerator {
         query.setStale(Stale.FALSE);
         ViewResponse response = couchbaseTemplate.queryView("poll", "sequence-id", query);
         if (response.iterator().hasNext()){
-            return Integer.valueOf(response.iterator().next().getValue() + 1).toString();
+            return Integer.toString(Integer.valueOf(response.iterator().next().getValue()) + 1);
         }
         return "1";
     }

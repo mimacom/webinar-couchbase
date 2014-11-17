@@ -7,12 +7,12 @@ var pollsApp = angular.module('pollsApp', [
 
 pollsApp
     .config(function ($routeProvider) {
-        $routeProvider.when('/', {templateUrl: 'views/welcome.html', controller: 'WelcomeCtrl'});
-        $routeProvider.when('/poll', {templateUrl: 'views/poll.html', controller: 'PollCtrl'});
-        $routeProvider.when('/poll/:pollId/options', {templateUrl: 'views/options.html', controller: 'PollCtrl'});
-        $routeProvider.when('/poll/:pollId/share', {templateUrl: 'views/share.html', controller: 'PollCtrl'});
-        $routeProvider.when('/poll/:pollId/fill', {templateUrl: 'views/votes.html', controller: 'VotesCtrl'});
-        $routeProvider.when('/poll/:pollId/participant/:participantId/thanks', {templateUrl: 'views/thanks.html', controller: 'ThanksCtrl'});
-        $routeProvider.when('/polls/:username', {templateUrl: 'views/polls.html', controller: 'PollsCtrl'});
+        $routeProvider.when('/', {templateUrl: 'views/welcome.html', controller: 'welcomeCtrl'});
+        $routeProvider.when('/poll', {templateUrl: 'views/poll.html', controller: 'pollCtrl'});
+        $routeProvider.when('/poll/:pollId/options', {templateUrl: 'views/options.html', controller: 'pollCtrl'});
+        $routeProvider.when('/poll/:pollId/share', {templateUrl: 'views/share.html', controller: 'pollCtrl'});
+        $routeProvider.when('/poll/:pollId/fill', {templateUrl: 'views/votes.html', controller: 'votesCtrl'});
+        $routeProvider.when('/poll/:pollId/participant/:participantId/thanks', {templateUrl: 'views/thanks.html', controller: 'thanksCtrl'});
+        $routeProvider.when('/polls/:username', {templateUrl: 'views/polls.html', controller: 'pollsCtrl'});
         $routeProvider.otherwise('/');
         });

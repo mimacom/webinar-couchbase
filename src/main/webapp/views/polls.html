@@ -9,8 +9,8 @@
     <hr/>
 
     <ul>
-        <li ng-repeat="poll in polls"><a ng-href="#/poll/{{poll.id}}?isAdmin=true">{{poll.title}}</a>
-            <p class="subtitle">{{poll.createdOn | date:'dd-MM-yyyy HH:mm' }} h</p>
+        <li ng-repeat="poll in polls"><a ng-href="#/poll/{{poll.id}}/fill?isAdmin=true">{{poll.title}}</a>
+            <p class="subtitle"> <span class="glyphicon glyphicon-time"></span> {{poll.createdOn | date:'dd-MM-yyyy HH:mm' }} h</p>
         </li>
     </ul>
 </div>

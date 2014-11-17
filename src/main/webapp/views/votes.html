@@ -46,18 +46,19 @@
         <br/>
         <br/>
         <br/>
-        <div ng-if="showSelect">
+
+        <div ng-if="showSelect" class="row" style="margin-bottom: 30px;">
+            <p>Select the most popular option to close the poll:</p>
             <ul class="nav nav-pills">
-                <li ng-repeat="option in popular.options track by $index"><a href="" ng-click="setOption(option)">{{option}}</a></li>
+                <li ng-repeat="option in popular.options track by $index"><a data-toggle="pill" href="" ng-click="setOption(option)">{{option}}</a></li>
             </ul>
         </div>
-        <div class="row" ng-if="isAdmin || isReadonly">
+
+        <div class="row" ng-if="isAdmin && !isReadonly">
             <button type="button" class="btn poll-btn" ng-click="closePoll()" ng-disabled="!selectedOption && showSelect">Close poll</button>
         </div>
 
-
         <button style="margin-top: 30px;" type="button" ng-if="!isReadonly && !isAdmin" ng-click="save()" ng-disabled="votesForm.$invalid" class="btn poll-btn btn-right">Save</button>
-
     </form>
 
 </div>
