@@ -46,7 +46,6 @@ public class PollServiceImpl implements PollService {
         Query query = new Query();
         query.setKey(ComplexKey.of(userName));
         query.setStale(Stale.FALSE);
-        query.setDescending(true);
         return this.pollRepository.findByUserName(query);
     }
 
