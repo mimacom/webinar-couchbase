@@ -6,6 +6,7 @@ import com.couchbase.client.protocol.views.ViewResponse;
 import com.couchbase.client.protocol.views.ViewRow;
 import com.mimacom.polls.repository.ParticipantCustomRepository;
 import com.mimacom.polls.repository.ParticipantRepository;
+import com.mimacom.polls.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.couchbase.core.CouchbaseTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,7 @@ public class ParticipantRepositoryImpl implements ParticipantCustomRepository{
 
     @Override
     public Integer findTotalVotes(Query query) {
-        ViewResponse response = this.couchbaseTemplate.queryView("participant", "total_votes", query);
+        ViewResponse response = this.couchbaseTemplate.queryView(Constants.DESIGN_DOC_PARTICIPANT.toString(), Constants.VIEW_TOTAL_VOTES.toString(), query);
         if (response.iterator().hasNext()){
             return Integer.valueOf(response.iterator().next().getValue());
         }

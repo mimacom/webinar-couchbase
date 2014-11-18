@@ -11,8 +11,10 @@ import java.util.List;
  * @author sago, mimacom
  * @since 0.1
  */
-public interface PollRepository extends CrudRepository<Poll, String>{
+public interface PollRepository extends CrudRepository<Poll, String> {
 
     List<Poll> findByUserName(Query query);
 
+    @View(designDocument = "common", viewName = "sequenceId")
+    String findSequenceId(Query query);
 }

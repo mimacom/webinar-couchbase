@@ -2,7 +2,7 @@
     "byPollFk": {
         "map": "function (doc, meta) {\n  if (doc._class == 'com.mimacom.polls.domain.Participant'){\n  \temit(doc.pollFk, null);\n  }\n}"
     },
-    "total_votes": {
+    "totalVotes": {
         "map": "function (doc, meta) {\n  if (doc._class == 'com.mimacom.polls.domain.Participant'){\n    for (var i=0;i<doc.votes.length;i++){\n      if (doc.votes[i].selected){\n        emit([doc.pollFk, doc.votes[i].option], null);\n      }\n    \t\n    }\n  }\n\n}",
         "reduce": "function(keys, values, rereduce) {\n return keys.length;\n}"
     }

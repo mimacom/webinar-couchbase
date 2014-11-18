@@ -1,0 +1,6 @@
+{ "_id": "_design/common", "language": "javascript", "views": {
+    "sequenceId": {
+        "map" : "function (doc, meta) { \nemit(meta.id, null); \n} ",
+        "reduce": "function (key, values, rereduce) {\n var max = 0;\n for(var i = 0; i < key.length; i++){\n max = Math.max(key[i], max);\n}\n return max+1;\n }"
+    }
+} }

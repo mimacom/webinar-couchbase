@@ -4,10 +4,9 @@ import com.couchbase.client.protocol.views.ComplexKey;
 import com.couchbase.client.protocol.views.Query;
 import com.couchbase.client.protocol.views.Stale;
 import com.mimacom.polls.domain.Poll;
+import com.mimacom.polls.repository.CommonRepository;
 import com.mimacom.polls.repository.PollRepository;
 import com.mimacom.polls.service.PollService;
-import com.mimacom.polls.util.N1Q3LIdGenerator;
-import com.mimacom.polls.util.ViewIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -20,20 +19,22 @@ import java.util.List;
  * @since 0.1
  */
 @Service
-public class PollServiceImpl extends ViewIdGenerator implements PollService {
+public class PollServiceImpl implements PollService {
 
     private final PollRepository pollRepository;
+    private final CommonRepository commonRepository;
 
     @Autowired
-    public PollServiceImpl(PollRepository pollRepository) {
+    public PollServiceImpl(PollRepository pollRepository, CommonRepository commonRepository) {
         this.pollRepository = pollRepository;
+        this.commonRepository = commonRepository;
     }
 
 
     @Override
     public String save(Poll poll) {
         if (poll.getId() == null){
-            poll.setId(this.getNextId());
+            poll.setId(this.commonRepository.getNextId());
             poll.setCreatedOn(new Date());
         }
         this.pollRepository.save(poll);
