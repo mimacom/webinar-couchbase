@@ -1,11 +1,12 @@
-package org.springframework.data.couchbase;
+package com.mimacom.polls.config;
 
 import com.couchbase.client.ClusterManager;
 import com.couchbase.client.clustermanager.BucketType;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -36,17 +37,16 @@ public class BucketCreator implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        DefaultHttpClient client = new DefaultHttpClient();
-        BasicCredentialsProvider credentialsProvider =  new BasicCredentialsProvider();
+        BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(adminUser, adminPass));
-        client.setCredentialsProvider(credentialsProvider);
+        HttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         ClientHttpRequestFactory rf = new HttpComponentsClientHttpRequestFactory(client);
 
         RestTemplate template = new RestTemplate(rf);
 
         String fullUri = "http://" + hostUri + ":8091/pools/default/buckets/" + this.bucket;
 
-        ResponseEntity<String> entity = null;
+        ResponseEntity<String> entity;
         try {
             entity = template.getForEntity(fullUri, String.class);
         } catch (HttpClientErrorException ex) {

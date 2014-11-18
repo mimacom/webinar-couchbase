@@ -44,21 +44,15 @@ public class PollRepositoryTest {
     @Before
     public void setup() throws Exception {
         this.pollRepository = new CouchbaseRepositoryFactory(couchbaseTemplate).getRepository(PollRepository.class);
-        this.pollRepository.deleteAll();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        this.pollRepository.deleteAll();
     }
 
     @Test
     public void testGetPollsByUserName() throws Exception {
-        Poll poll1 = savePoll("12", "Poll 1", "test@mimacom.com", "sgomez");
-        Poll poll2 = savePoll("43", "Poll 2", "test@mimacom.com", "sgomez");
+        Poll poll1 = savePoll("12", "Poll 1", "test@mimacom.com", "sago");
+        Poll poll2 = savePoll("43", "Poll 2", "test@mimacom.com", "sago");
 
         Query query = new Query();
-        query.setKey(ComplexKey.of("sgomez"));
+        query.setKey(ComplexKey.of("sago"));
         query.setStale(Stale.FALSE);
         List<Poll> polls = this.pollRepository.findByUserName(query);
         assertNotNull(polls);
@@ -78,7 +72,7 @@ public class PollRepositoryTest {
 
     @Test
     public void testFindById() throws Exception {
-        Poll poll1 = savePoll("32", "Poll 1", "test@mimacom.com", "sgomez");
+        Poll poll1 = savePoll("32", "Poll 1", "test@mimacom.com", "pepe");
 
         Poll savedPoll = this.pollRepository.findOne("32");
         this.assertPoll(poll1, savedPoll);

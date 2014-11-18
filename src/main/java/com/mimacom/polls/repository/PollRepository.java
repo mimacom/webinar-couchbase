@@ -15,6 +15,4 @@ public interface PollRepository extends CrudRepository<Poll, String> {
 
     List<Poll> findByUserName(Query query);
 
-    @View(designDocument = "common", viewName = "sequenceId")
-    String findSequenceId(Query query);
 }

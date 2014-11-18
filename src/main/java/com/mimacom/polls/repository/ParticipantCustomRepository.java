@@ -7,5 +7,6 @@ import com.couchbase.client.protocol.views.Query;
  * @since 0.1
  */
 public interface ParticipantCustomRepository {
+
     Integer findTotalVotes(Query query);
 }

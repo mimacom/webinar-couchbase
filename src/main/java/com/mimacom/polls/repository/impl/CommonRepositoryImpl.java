@@ -30,6 +30,9 @@ public class CommonRepositoryImpl implements CommonRepository {
         Query query = new Query();
         query.setStale(Stale.FALSE);
         ViewResponse response = this.couchbaseTemplate.queryView(Constants.DESIGN_DOC_COMMON.toString(), Constants.VIEW_SEQUENCE_ID.toString(), query);
-        return response.iterator().next().getValue();
+        if (response.iterator().hasNext()){
+            return response.iterator().next().getValue();
+        }
+        return "1";
     }
 }

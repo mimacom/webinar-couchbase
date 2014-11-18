@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-init="init()">
     <div class="row">
         <div class="info-text">Second step! Now it's time for you to build your poll, list below the possible options
             for the poll
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn poll-btn btn-md btn-right" ng-click="saveOptions()" ng-disabled="enableNext()">Continue...</button>
+        <button type="button" class="btn poll-btn btn-md btn-right" ng-click="saveOptions()">Continue...</button>
     </form>
 
 </div>
