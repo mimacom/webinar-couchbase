@@ -122,7 +122,8 @@ body {
     text-decoration: none;
 }
 
-.poll-btn {
+.poll-btn,
+.poll-btn:focus {
     background-color: #18866B;
     border-color: #188A6E;
     color: rgb(250, 250, 248);
