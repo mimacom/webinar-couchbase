@@ -21,9 +21,6 @@
         <javax.inject.version>1</javax.inject.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.framework.version>4.1.0.RELEASE</spring.framework.version>
-        <couchbase.user>Administrator</couchbase.user>
-        <couchbase.pwd>s3cr3t0</couchbase.pwd>
-        <couchbase.bucket>spc</couchbase.bucket>
     </properties>
 
     <repositories>
@@ -184,12 +181,12 @@
                             <arguments>
                                 <argument>/C</argument>
                                 <argument>init_couchbase.bat</argument>
-                                <argument>Administrator</argument>
-                                <argument>s3cr3t0</argument>
-                                <argument>localhost:8091</argument>
-                                <argument>polls</argument>
+                                <argument>${couchbase.username}</argument>
+                                <argument>${couchbase.pass}</argument>
+                                <argument>${couchbase.host}</argument>
+                                <argument>${couchbase.bucket}</argument>
                                 <!-- RAM size -->
-                                <argument>100</argument>
+                                <argument>${couchbase.ramsize}</argument>
                             </arguments>
                         </configuration>
                     </plugin>
@@ -211,10 +208,10 @@
                             <arguments>
                                 <argument>/C</argument>
                                 <argument>couchbase_data.bat</argument>
-                                <argument>Administrator</argument>
-                                <argument>s3cr3t0</argument>
-                                <argument>localhost:8091</argument>
-                                <argument>polls</argument>
+                                <argument>${couchbase.username}</argument>
+                                <argument>${couchbase.pass}</argument>
+                                <argument>${couchbase.host}</argument>
+                                <argument>${couchbase.bucket}</argument>
                             </arguments>
                         </configuration>
                     </plugin>

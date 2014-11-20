@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ BAXTER CONFIDENTIAL - Highly Restricted: Do not distribute without prior approval
-  ~
-  ~  Project: Service Pricing Calculator
-  ~
-  ~  Copyright © $year Baxter Healthcare Corporation. All rights reserved.
-  -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -18,7 +11,7 @@
     <context:component-scan
             base-package="com.mimacom.polls.web.controller, com.mimacom.polls.service.impl, com.mimacom.polls.repository.impl, com.mimacom.polls.config, com.mimacom.polls.util"/>
 
-     <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -29,5 +22,5 @@
         <property name="order" value="100"/>
     </bean>
 
-
+    <context:property-placeholder location="classpath:com/mimacom/polls/config/couchbase.properties"/>
 </beans>
