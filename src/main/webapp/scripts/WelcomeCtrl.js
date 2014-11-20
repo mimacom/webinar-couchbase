@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * initial controller
+ */
+
 pollsApp.controller('welcomeCtrl', function ($scope, $location) {
 
     $scope.start = function () {

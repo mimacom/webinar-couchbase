@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * last step controller
+ */
+
 pollsApp
     .controller('thanksCtrl', function ($scope, $routeParams, $location, participantService, notify) {
 

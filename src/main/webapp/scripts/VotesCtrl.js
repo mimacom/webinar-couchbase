@@ -2,6 +2,10 @@
 
 var isDefined = angular.isDefined;
 
+/**
+ * controller to manage the votes of the participants
+ */
+
 pollsApp
     .controller('votesCtrl', function ($scope, $routeParams, pollService, participantService, $location, notify) {
 

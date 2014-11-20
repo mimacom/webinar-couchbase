@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Services to manage poll objects
+ */
+
 pollsApp.factory('pollService', function ($http) {
     return {
         createPoll: function (poll) {

@@ -1,6 +1,9 @@
 'use strict';
 
-/* Services */
+/**
+ * Service to manage participants
+ */
+
 pollsApp
     .factory('participantService', function($http){
         return {
@@ -25,5 +28,4 @@ pollsApp
                 });
             }
         };
-
     });

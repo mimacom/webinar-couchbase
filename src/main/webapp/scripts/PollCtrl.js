@@ -2,9 +2,16 @@
 
 var isDefined = angular.isDefined;
 
+/**
+ * controller to manage a poll: initial creation & options definition
+ */
+
 pollsApp
 .controller('pollCtrl', function ($scope, pollService, $location, $routeParams, $filter) {
+
+        //noinspection JSUnresolvedVariable
         var pollId = $routeParams.pollId;
+
         $scope.pollUrl = 'http://localhost:8080/polls/#/poll/' + pollId + '/fill';
 
         $scope.createPoll = function () {
@@ -42,4 +49,3 @@ pollsApp
         };
 
     });
-
