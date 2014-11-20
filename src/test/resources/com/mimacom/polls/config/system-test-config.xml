@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ BAXTER CONFIDENTIAL - Highly Restricted: Do not distribute without prior approval
-  ~
-  ~  Project: Service Pricing Calculator
-  ~
-  ~  Copyright © $year Baxter Healthcare Corporation. All rights reserved.
-  -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

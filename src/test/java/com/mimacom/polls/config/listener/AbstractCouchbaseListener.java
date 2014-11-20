@@ -1,11 +1,3 @@
-/*
- * BAXTER CONFIDENTIAL - Highly Restricted: Do not distribute without prior approval
- *
- *  Project: Service Pricing Calculator
- *
- *  Copyright © $year Baxter Healthcare Corporation. All rights reserved.
- */
-
 package com.mimacom.polls.config.listener;
 
 import com.couchbase.client.CouchbaseClient;
