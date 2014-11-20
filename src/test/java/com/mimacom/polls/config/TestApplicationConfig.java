@@ -1,9 +1,12 @@
 package com.mimacom.polls.config;
 
 import com.couchbase.client.CouchbaseClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
 import org.springframework.data.couchbase.core.CouchbaseTemplate;
 import org.springframework.data.couchbase.core.WriteResultChecking;
@@ -14,31 +17,35 @@ import java.util.List;
 
 @Configuration
 @EnableCouchbaseRepositories("com.mimacom.polls.repository")
+@PropertySource(value = {"classpath:com/mimacom/polls/config/couchbase.properties"})
 public class TestApplicationConfig extends AbstractCouchbaseConfiguration {
+
+    @Autowired
+    private Environment env;
 
     @Bean
     public String couchbaseAdminUser() {
-        return  "Administrator";
+        return  env.getProperty("couchbase.username");
     }
 
     @Bean
     public String couchbaseAdminPassword() {
-        return "s3cr3t0";
+        return env.getProperty("couchbase.password");
     }
 
     @Override
     protected List<String> bootstrapHosts() {
-        return Arrays.asList("127.0.0.1");
+        return Arrays.asList(env.getProperty("couchbase.host"));
     }
 
     @Override
     protected String getBucketName() {
-        return "test-polls";
+        return env.getProperty("couchbase.test.bucket");
     }
 
     @Override
     protected String getBucketPassword() {
-        return "test-polls";
+        return env.getProperty("couchbase.test.bucket.pass");
     }
 
     @Bean
