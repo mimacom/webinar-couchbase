@@ -1,5 +1,4 @@
 #README for polls
-==========================
 
 ## Requisites
 
