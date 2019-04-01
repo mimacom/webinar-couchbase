@@ -74,7 +74,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.framework.version}</version>
+            <version>[4.3.17,)</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
